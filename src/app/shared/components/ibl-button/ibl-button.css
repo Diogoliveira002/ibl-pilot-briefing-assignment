@@ -1,0 +1,14 @@
+.ibl-button {
+  display: flex;
+  justify-content: center;
+
+  button {
+    ::ng-deep .mdc-button__label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    flex: 1 1 auto;
+  }
+  
+}

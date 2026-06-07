@@ -1,0 +1,42 @@
+<div class="ibl-form-card">
+  <ibl-card
+    title="Provide briefing criteria"
+    subtitle="Select message types and enter country and/or airport names"
+    size="md"
+    actionsAlign="end"
+  >
+    <div class="ibl-form-content" [formGroup]="briefingForm">
+      <div class="ibl-checkbox-container">
+        <div class="ibl-checkbox-group" formArrayName="messageTypes">
+          <span>Message Types:</span>
+          @for (item of reportTypes; track $index) {
+            <ibl-checkbox [formControlName]="$index" [label]="item.label" />
+          }
+        </div>
+        @if (messageTypesInvalid) {
+          <div class="ibl-checkbox-error">{{ messageTypesError?.['atLeastOneRequired'] }}</div>
+        }
+      </div>
+
+      @for (field of fields; track field.key) {
+        <ibl-input
+          [formControlName]="field.key"
+          [label]="field.label"
+          [placeholder]="field.placeholder"
+          [customErrors]="field.customErrors"
+        ></ibl-input>
+      }
+    </div>
+
+    <div class="ibl-form-actions" card-actions>
+      <ibl-button label="Cancel" type="outlined" (onClick)="_onCancel()"></ibl-button>
+      <ibl-button
+        label="Submit"
+        type="tonal"
+        [disabled]="briefingForm.invalid || loading"
+        [loading]="loading"
+        (onClick)="_onSubmit()"
+      ></ibl-button>
+    </div>
+  </ibl-card>
+</div>

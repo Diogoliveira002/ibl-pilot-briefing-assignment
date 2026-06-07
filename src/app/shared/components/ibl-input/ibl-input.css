@@ -1,0 +1,5 @@
+.ibl-input{
+    mat-form-field {
+        width: 100%;
+    }
+}

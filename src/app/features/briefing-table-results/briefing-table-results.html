@@ -1,0 +1,9 @@
+<div class="station-grid">
+  @for (group of groups; track group.stationId) {
+      <ibl-table
+        [columns]="group.columns"
+        [rows]="group.rows"
+        [loading]="loading"
+      />
+  }
+</div>

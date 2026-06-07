@@ -1,0 +1,11 @@
+.station-grid {
+  display: grid;
+  align-items: start;
+  border-radius: 8px  ;
+}
+
+ibl-table {
+  --ibl-table-header-bg:    var(--mat-sys-primary-container);
+  --ibl-table-header-color: var(--mat-sys-on-primary-container);
+}
+

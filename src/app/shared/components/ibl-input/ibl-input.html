@@ -1,0 +1,35 @@
+<div class="ibl-input">
+  <mat-form-field [appearance]="appearance" [class.mat-form-field-invalid]="invalid">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      matInput
+      [type]="type"
+      [placeholder]="placeholder"
+      [required]="required"
+      [disabled]="isDisabled()"
+      [value]="value()"
+      [errorStateMatcher]="errorStateMatcher"
+      (input)="handleChange($any($event.target).value)"
+      (blur)="handleBlur()"
+    />
+    @if (hint) {
+      <mat-hint>{{ hint }}</mat-hint>
+    }
+    <mat-error>
+      @for (entry of customErrorEntries; track entry.key) {
+        @if (errors?.[entry.key]) {
+          {{ entry.message }}
+        }
+      }
+      @if (!customErrorEntries.length) {
+        @if (errors?.['required']) {
+          This field is required.
+        } @else if (errors?.['minlength']) {
+          Minimum {{ errors?.['minlength'].requiredLength }} characters.
+        } @else if (errors?.['email']) {
+          Invalid email address.
+        }
+      }
+    </mat-error>
+  </mat-form-field>
+</div>

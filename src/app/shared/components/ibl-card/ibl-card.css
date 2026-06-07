@@ -1,0 +1,15 @@
+.ibl-card-container {
+    mat-card {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    &.sm { width: 300px; }
+    &.md { width: 500px; }
+    &.lg { width: 700px; }
+
+    mat-card-actions {
+        &.start { justify-content: flex-start; }
+        &.end   { justify-content: flex-end; }
+    }
+}

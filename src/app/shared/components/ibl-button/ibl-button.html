@@ -1,0 +1,8 @@
+<div class="ibl-button">
+  <button [matButton]="type" [disabled]="disabled" (click)="onClick.emit()">
+    {{ label }}
+    @if(loading){
+      <ibl-spinner></ibl-spinner>
+    }
+  </button>
+</div>

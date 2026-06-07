@@ -1,0 +1,35 @@
+.ibl-table-wrapper {
+  position: relative;
+
+  .ibl-table-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: color-mix(in srgb, var(--mat-sys-surface) 80%, transparent);
+    border-radius: 4px;
+  }
+
+  .ibl-table {
+    width: 100%;
+    table-layout: fixed;
+
+    th,
+    td {
+      padding: 0 1rem;
+    }
+
+    th {
+      background-color: var(--ibl-table-header-bg, transparent);
+      color: var(--ibl-table-header-color, inherit);
+    }
+
+    td {
+      .ibl-custom-cell {
+        width: 100%;
+      }
+    }
+  }
+}

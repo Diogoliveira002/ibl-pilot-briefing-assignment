@@ -1,0 +1,8 @@
+<mat-checkbox [checked]="value()"
+              [disabled]="isDisabled()"
+              [required]="required"
+              [indeterminate]="indeterminate"
+              [labelPosition]="labelPosition"
+              (change)="handleChange($event.checked)">
+{{ label }}
+</mat-checkbox>

@@ -1,0 +1,33 @@
+<div class="home">
+  <h1>Weather Report</h1>
+  <h2>Find out about the current weather conditions on a country and/or airport</h2>
+
+  @if (!showForm()) {
+    <div class="ibl-button-container">
+      <ibl-button type="tonal" label="Check Weather" (onClick)="onShowForm()"></ibl-button>
+    </div>
+  }
+
+  @if (showForm()) {
+    <div class="ibl-form-container">
+      <app-briefing-form
+        [loading]="loading()"
+        (close)="onFormClose()"
+        (success)="onFormSuccess($event)"
+      ></app-briefing-form>
+    </div>
+  }
+
+  @if (error()) {
+    <div class="ibl-error-banner">{{ error() }}</div>
+  }
+
+  @if (warning()) {
+    <div class="ibl-warning-banner">{{ warning() }}</div>
+  }
+
+    <app-briefing-table-results
+      [results]="results()"
+      [loading]="loading()"
+    ></app-briefing-table-results>
+</div>

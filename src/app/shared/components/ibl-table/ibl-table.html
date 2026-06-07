@@ -1,0 +1,33 @@
+<div class="ibl-table-wrapper">
+  @if (loading) {
+    <div class="ibl-table-overlay">
+      <ibl-spinner [diameter]="40" />
+    </div>
+  }
+
+  <table mat-table [dataSource]="rows" class="ibl-table">
+
+    @for (col of columns; track col.key) {
+      <ng-container [matColumnDef]="col.key">
+        <th mat-header-cell *matHeaderCellDef [style.width]="col.width ?? ''">{{ col.label }}</th>
+        <td mat-cell *matCellDef="let row">
+          @if (cellTemplates[col.key]) {
+            <ng-container
+              *ngTemplateOutlet="cellTemplates[col.key]; context: { $implicit: row }"
+            ></ng-container>
+          } @else if (col.html) {
+            <span class="ibl-custom-cell" [innerHTML]="row[col.key]"></span>
+          } @else {
+            {{ row[col.key] }}
+          }
+        </td>
+      </ng-container>
+    }
+
+    @if (!hideHeader) {
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    }
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+  </table>
+</div>

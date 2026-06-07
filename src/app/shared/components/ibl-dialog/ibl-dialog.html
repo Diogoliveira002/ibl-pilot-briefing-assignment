@@ -1,0 +1,19 @@
+<div class="ibl-dialog">
+  <h2 mat-dialog-title>{{ data.title }}</h2>
+
+  @if (data.message) {
+    <mat-dialog-content>
+      <p>{{ data.message }}</p>
+    </mat-dialog-content>
+  }
+
+  <mat-dialog-actions>
+    @for (action of data.actions; track action.label) {
+      <ibl-button
+        [label]="action.label"
+        [type]="action.type ?? ''"
+        (onClick)="close(action.result)"
+      />
+    }
+  </mat-dialog-actions>
+</div>

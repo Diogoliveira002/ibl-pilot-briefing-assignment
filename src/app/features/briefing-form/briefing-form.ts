@@ -44,7 +44,7 @@ export class BriefingForm {
       validators: [airportValidator, atLeastOneInputFilled],
       uppercase: true,
       customErrors: {
-        invalidAirports: 'Each code must be 4 letters.',
+        invalidAirports: 'Each code must be 4 letters separated by space.',
         atLeastOneRequired: 'At least one of Airport or Country must be filled.',
       },
     },
@@ -55,7 +55,7 @@ export class BriefingForm {
       validators: [countryValidator, atLeastOneInputFilled],
       uppercase: true,
       customErrors: {
-        invalidCountries: 'Each code must be 2 letters.',
+        invalidCountries: 'Each code must be 2 letters separated by space.',
         atLeastOneRequired: 'At least one of Airport or Country must be filled.',
       },
     },
